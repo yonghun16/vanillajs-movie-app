@@ -32,3 +32,22 @@ export default class App extends Component {
 ### this의 의미는?
 - this는 **현재 클래스 인스턴스(객체)**를 가리킴.
 - 쉽게 말해서, 클래스에서 this는 __“지금 만들고 있는 그 컴포넌트”__ 자체를 의미함.
+
+
+### join()
+- 배열을 문자열로 출력하고 싶을 때  -> '배열자료형'을 '문자열자료형'으로 변환
+- [1,2,3].join(',') => '1,2,3'
+```js
+  ${this.state.fruits.map(fruit => ` <li>${fruit.name}</li> `).join('')}
+```
+
+
+### filter(callback)
+- callback 조건에 true를 반환하는 결과값만 배열에 포함함.
+- [1,2,3].filter(num => num > 2) => [3]
+```js
+  <ul>
+    ${this.state.fruits.filter(fruit => fruit.prince < 3000).map(fruit => ` <li>${fruit.name}</li> `).join('')}
+  </ul>
+
+```
