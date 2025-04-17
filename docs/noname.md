@@ -18,14 +18,27 @@ root.append(new App().el)
 - super()는 JavaScript에서 부모 클래스의 생성자(constructor)를 호출하는 함수
 - 왜 super()가 필요한가? : 자바스크립트에서 클래스를 상속받은 경우, 자식 클래스의 생성자에서 super()를 호출하지 않으면 this를 사용할 수 없음. 즉, super()는 this를 초기화할 수 있도록 도와주는 역할도 함.
 ```js
-export default class App extends Component {
-  constructor() {
-    super()
-  }
-  render() {
-    this.el.textContent = 'Hello World'
+class Animal {
+  constructor(parentName) {
+    this.name = parentName;
   }
 }
+
+class Dog extends Animal {
+  constructor(childName, breed) {
+    super(childName);         // 부모 생성자 호출  super(childName) === constructor(parentName)
+                              // this.name = childName
+    this.breed = breed;
+  }
+
+  speak() {
+    console.log(`${this.name} barks. (${this.breed})`);
+  }
+}
+
+const dog = new Dog("Buddy", "Golden Retriever");
+dog.speak();
+
 ```
 
 
@@ -51,3 +64,19 @@ export default class App extends Component {
   </ul>
 
 ```
+
+
+### ...   전개연산자
+- join()과 다른점은 join() 문자열로 만들어버림
+- ... 전개연산자는 전개해서(풀어서) 자료형은 유지함.
+- 배열에 쓰면 대괄호만 날려버릴 수 있다.
+```js
+  console.log(...['a', 'b'])   // a b
+  ['a', 'b'].join('')          // 'ab'
+```
+
+
+### append()
+- El.append(...)는 DOM 요소에 '자식 노드'를 추가하는 메서드.
+- append(...) -> 여러 요소나 문자열을 한 번에 추가 가능
+- appendChild(...) ->  오직 하나의 노드만 추가 가능
