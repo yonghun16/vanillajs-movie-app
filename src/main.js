@@ -1,6 +1,4 @@
-import './style.css'
+import App from './App'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-  </div>
-`
+const root = document.querySelector('#root')
+root.append(new App().el)
