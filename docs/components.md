@@ -1,14 +1,14 @@
 ## 컴포넌트 구조
 
 ### VanillaJS Movie App의 Class 구조
-```JSON
+```Text
 - core
   - App
   - FruitItem
 ```
 
 ### VanillaJS Movie App의 Component 구조
-```JSON
+```Text
 - main
   - App
     - FruitItem
@@ -39,7 +39,7 @@ export class Component {                          // Component를 export
 ```
 
 
-#### 컴포넌트 정의
+#### 1. 컴포넌트 정의
 - 컴포넌트란   : UI의 특정 조각(부분)을 캡슐화한 독립적인 코드 블록으로, 구조(HTML), 스타일(CSS), 동작(JS)를 함께 정의한 것.
 - 재사용성     : 같은 UI를 여러 곳에서 다시 쓸 수 있음
 - 유지보수성   : 코드가 잘 나뉘어져 있으면 수정하기 쉬움
@@ -65,12 +65,12 @@ function Button({ label }) {
 
 
 ### Props와 state
-#### props의 개념 요약
+#### 1. props의 개념 요약
 - 데이터 전달 수단: 부모 → 자식
 - 읽기 전용 (immutable): 자식 컴포넌트는 받은 props를 직접 수정할 수 없음
 - 컴포넌트 재사용성 향상: 같은 컴포넌트를 다양한 데이터로 재사용 가능
 
-#### state의 개념 요약
+#### 2.state의 개념 요약
 - **state는 컴포넌트 내부에서 관리되는 동적인 데이터(상태)**를 의미.
 - 컴포넌트 내부에서 선언 및 관리됨
 - 변경될 수 있는(mutable) 값
