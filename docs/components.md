@@ -1,13 +1,13 @@
-## 컴포넌트 구조
+## 컴포넌트
 
-### VanillaJS Movie App의 Class 구조
+#### 1. Class 구조
 ```Text
 - core
   - App
   - FruitItem
 ```
 
-### VanillaJS Movie App의 Component 구조
+#### 2. Component 구조
 ```Text
 - main
   - App
@@ -45,7 +45,7 @@ export class Component {                          // Component를 export
 - 유지보수성   : 코드가 잘 나뉘어져 있으면 수정하기 쉬움
 - 분리와 독립성: 하나의 기능/UI 단위를 잘 분리해두면 독립적으로 개발 가능
 
-#### 1. 순수 JS 컴포넌트 (직접 만든 경우)
+#### 2. 순수 JS 컴포넌트 (직접 만든 경우)
 ```javascript
 export default class Button {
   constructor(label) {
@@ -56,7 +56,7 @@ export default class Button {
 }
 ```
 
-#### 2. React 같은 프레임워크의 컴포넌트
+#### 3. React 같은 프레임워크의 컴포넌트
 ```jsx
 function Button({ label }) {
   return <button className="my-button">{label}</button>
