@@ -1,4 +1,4 @@
-import { Component } from './core/Core'
+import { Component } from '../core/Core'
 
 export default class TheHeader extends Component {
   constructor() {

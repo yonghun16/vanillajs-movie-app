@@ -62,8 +62,21 @@ dog.speak();
   <ul>
     ${this.state.fruits.filter(fruit => fruit.prince < 3000).map(fruit => ` <li>${fruit.name}</li> `).join('')}
   </ul>
-
 ```
+
+### find()
+- find() 함수는 JavaScript에서 배열(Array)에 사용되는 메서드로, 주어진 조건을 만족하는 첫 번째 요소를 반환. 
+- 만약 조건을 만족하는 요소가 없으면 undefined를 반환.
+```js
+  array.find(callback(element[, index[, array]])[, thisArg])
+```
+
+### filter()와 find() 차이
+- 반환값    : find() : 첫 번째로 조건을 만족하는 요소 하나, filter() : 모든 조건을 만족하는 요소들의 배열
+- 조건      : find() : 조건에 맞는 1개, filter() : 조건에 맞는 배열
+- 결과 타입 : find() : 요소(oject, number 등), filter() : 배열
+- 조건 만족 : find() : 하나만 찾으면 끝,  filter() : 끝까지 다 검사해서 다 찾음
+- 반환 없음 : find() : undefined, filter() : [](빈 배열)
 
 
 ### ...   전개연산자
@@ -80,3 +93,10 @@ dog.speak();
 - El.append(...)는 DOM 요소에 '자식 노드'를 추가하는 메서드.
 - append(...) -> 여러 요소나 문자열을 한 번에 추가 가능
 - appendChild(...) ->  오직 하나의 노드만 추가 가능
+
+
+### window.addEventListener('popstate', () => {})
+- popstate 이벤트는 브라우저의 세션 기록(stack) 이 변경될 때 발생하는 이벤트. 
+- 특히, 사용자가 뒤로 가기(back) 또는 앞으로 가기(forward) 버튼을 눌렀을 때 트리거됨.
+
+
