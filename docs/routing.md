@@ -21,7 +21,9 @@
 #### 1. core/Router
 ```js
 ///// Router /////
+/* router 렌더링 */
 function routeRender(routes) {          // routes -> [{path, component}, {path, component}, ...]
+  /* '/' 이동 */
   if (!location.hash) {                 // location.hash가 없다면 즉 '/' 경로이면
     history.pushState(null, '', '#/')   // #/로 이동
   }
@@ -29,6 +31,7 @@ function routeRender(routes) {          // routes -> [{path, component}, {path, 
   const routerView = document.querySelector('router-view')
   const [hash, queryString = ''] = location.hash.split('?')    // #/about?name=song 에서 ? 기준으로 앞쪽은 hash, 뒷쪽은 query
 
+  /* query를 state로 변환 */
   const query = queryString                 // queryString -> a=123&b=456
     .split('&')                             //               ['a=123', 'b=456']
     .reduce((acc, cur) => {                 //               {a: '123', b: '456'} -> query
@@ -37,12 +40,18 @@ function routeRender(routes) {          // routes -> [{path, component}, {path, 
       return acc
     }, {})
   history.replaceState(query, '')     // history.replaceState({a: '123', b: '456'}, '')
+                                      // history.replaceState(state, title, url)
 
-
+  /* route 렌더링 */
   const currentRoute = routes.find(route => new RegExp(`^${route.path}/?$`).test(hash))   // 현재 주소 해시와 일치하는 route를 찾는 코드
   routerView.innerHTML = ''                                                               // 라우터 뷰 영역을 먼저 비워줌
   routerView.append(new currentRoute.component().el)                                      // 새로운 컴포넌트의 .el DOM 요소를 routerView에 추가함
+
+  /* 페이지 변환 시 스크롤 최상단 이동 */
+  window.scrollTo(0, 0)
 }
+
+/* Router 생성 */
 export function createRouter(routes) {
   return function () {
     window.addEventListener('popstate', () => {    // 브라우져의 세션 기록이 변경되면
@@ -74,4 +83,20 @@ const regex = new RegExp(`^${route}/?$`);   // ^/about/?$
 console.log(regex.test(hash));   // true
 ```
 
+#### 3. routess/About.js
+```js
+import { Component } from '../core/Core'
+
+export default class About extends Component {
+  render() {
+    const {a, b, c} = history.state                     // state 값을 받아와 페이지 내에서 변수로 활용 가능
+    this.el.innerHTML = `
+      <h1>About Page!</h1>
+      <h2>${a}</h2>
+      <h2>${b}</h2>
+      <h2>${c}</h2>
+    `
+  }
+}
+```
 
