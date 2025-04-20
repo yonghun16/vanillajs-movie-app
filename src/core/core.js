@@ -17,6 +17,7 @@ export class Component {
 }
 
 
+
 ///// Router /////
 /* router 렌더링 */
 function routeRender(routes) {   // routes -> [{path, component}, {path, component}, ...]
@@ -56,3 +57,20 @@ export function createRouter(routes) {  // routes -> [{path, component}, {path, 
     routeRender(routes)
   }
 }
+
+
+
+///// Store /////
+export class Store {
+  constructor(state) {
+    this.state = {}
+    for (const key in state) {
+      Object.defineProperty(this.state, key, {
+        get: () => {},
+        set: () => {}
+      })
+    }
+  }
+}
+
+

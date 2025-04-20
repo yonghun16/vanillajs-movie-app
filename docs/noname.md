@@ -161,3 +161,51 @@ history.replaceState(state, title, url);
 - /abc\// : 리터럴에서는 /가 정규식의 경계라서 문자 /를 쓰려면 \/로 escape
 - new RegExp('abc/') : 생성자에서는 그냥 문자열이니깐 /를 escape 할 필요가 없음.
 
+
+### 14. Object.defineProperty()
+- Object.defineProperty() 함수는 JavaScript에서 객체의 **속성(property)**을 정교하게 정의하거나 수정할 때 사용하는 메서드.
+- 일반적인 obj.key = value 방식보다 더 세부적인 설정이 가능
+```JavaScript
+Object.defineProperty(obj, prop, descriptor)
+```
+- obj: 속성을 정의할 대상 객체
+- prop: 정의할 속성 이름 (문자열 또는 심볼)
+- descriptor: 속성의 동작을 설명하는 객체
+```JavaScript
+// descriptor예시
+const person = {};
+
+Object.defineProperty(person, 'name', {
+  value: 'Alice',               // 속성의 실제값
+  writable: false,              // 값을 변경할 수 있는지 여부(true/false)
+  enumerable: true,             // for...in 구문을 사용하여 속성을 찾을 수 있는지 여부
+  configurable: false           // 속성을 정의하고 제거할 수 있는지 여부
+});
+
+console.log(person.name); // Alice
+
+person.name = 'Bob';
+console.log(person.name); // 여전히 Alice (writable: false)
+```
+```JavaScript
+// Geeter/Setter 예시
+const user = {};
+let age = 30;
+
+Object.defineProperty(user, 'age', {
+  get() {
+    return age;
+  },
+  set(value) {
+    if (value >= 0) {
+      age = value;
+    }
+  }
+});
+
+console.log(user.age); // 30
+user.age = 35;
+console.log(user.age); // 35
+user.age = -5;         // set을 시도했으나 조건에 맞지 않아 적용되지 않음
+console.log(user.age); // 여전히 35
+```
