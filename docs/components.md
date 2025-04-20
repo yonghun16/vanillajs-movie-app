@@ -1,14 +1,14 @@
-## 컴포넌트
+# 컴포넌트
 
-### 구조
-#### 1. Class 구조
+## 구조
+### 1. Class 구조
 ```Text
 - core
   - App
   - FruitItem
 ```
 
-#### 2. Component 구조
+### 2. Component 구조
 ```Text
 - main
   - App
@@ -16,7 +16,7 @@
 ```
 
 
-### Component Class (root Component)
+### 3. Component Class (root Component)
 
 ```js
 ///// Component /////
@@ -65,7 +65,7 @@ function Button({ label }) {
 ```
 
 
-### Props와 state
+## Props와 state
 #### 1. props의 개념 요약
 - 데이터 전달 수단: 부모 → 자식
 - 읽기 전용 (immutable): 자식 컴포넌트는 받은 props를 직접 수정할 수 없음
