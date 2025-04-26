@@ -65,12 +65,16 @@ export class Store {
   constructor(state) {
     this.state = {}
     this.observers = {}     // 구독자들(감시자들)
+
     for (const key in state) {
+      // 각 상태에 대한 변경 감시(Seeter) 설정!
       Object.defineProperty(this.state, key, {
         get: () => state[key],      // state['message']
         set: (val) => {
           state[key] = val
-          this.observers[key].forEach(observer => observer(val))
+          if (Array.isArray(this.observers[key])) {  // 호출할 콜백이 있는 경우!
+            this.observers[key].forEach(observer => observer(val))
+          }
         }
       })
     }
