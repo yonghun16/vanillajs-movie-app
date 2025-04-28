@@ -11,16 +11,22 @@ export default class MovieList extends Component {
     movieStore.subscribe('loading', () => {    // loading 상태가 변경되면(loading state를 구독)
       this.render()                            // render 함수를 실행
     })
+    movieStore.subscribe('message', () => {
+      this.render()
+    })
   }
   render() {
     this.el.classList.add('movie-list')
     this.el.innerHTML = `
-      <div class="movies"></div>                <!-- 영화 리스트 -->
+      ${movieStore.state.message                // movieStore.state.message가 Truethy라면 (빈 문자가 아니라면)
+        ? `<div class="message">${movieStore.state.message}</div>`  // message를 보여주고,
+        : '<div class="movies"></div>'          // 빈문자라면(message가 없다면) 무비리스트를 보여준다.
+      }
       <div class="the-loader hide"></div>       <!-- 로딩 bar -->
     `
 
     const moviesEl = this.el.querySelector('.movies')
-    moviesEl.append(
+    moviesEl?.append(                                 // moviesEl에 값이 있을 때만 append method를 쓰겠다.
       ...movieStore.state.movies.map(movie => new MovieItem({
         movie
       }).el)
