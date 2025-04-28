@@ -5,12 +5,13 @@ const store = new Store({
   page: 1,
   pageMax: 1,
   movies: [],
+  loading: false,
 })
 
 export default store
 export const searchMovies = async page => {
+  store.state.loading = true
   store.state.page = page       // store.state.page를 현재 페이지로 바꾸기
-
   if (page === 1) {             // 1번째 페이지이면
     store.state.movies = []     // 영화 리스트 제거
   }
@@ -23,4 +24,5 @@ export const searchMovies = async page => {
     ...Search                   // 검색 결과 영화 리스트  (ex. 3page)
   ]
   store.state.pageMax = Math.ceil(Number(totalResults) / 10)   // (최종 검색 결과 / 10) ->  마지막 페이지
+  store.state.loading = false
 }
