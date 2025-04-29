@@ -5,11 +5,14 @@ const store = new Store({
   page: 1,
   pageMax: 1,
   movies: [],
+  movie: {},
   loading: false,
   message: 'Search for the movie title!',
 })
 
 export default store
+
+/* 영화 리스트 가져오기 */
 export const searchMovies = async page => {
   store.state.loading = true
   store.state.page = page       // store.state.page를 현재 페이지로 바꾸기
@@ -18,11 +21,10 @@ export const searchMovies = async page => {
     store.state.message = ''
   }
 
-  /* 영화 정보 가져오기 */
   // 네트워크 요청(fetch)은 실패할 수 있으므로, try-catch-finally를 써서
   // 에러를 안전하게 잡고, 로딩 상태를 정확히 관리함.
   try {
-    const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=981672ca&s=${store.state.searchText}&page=${page}`)     // API Usage : https://www.omdbapi.com/?apikey=[yourkey]&
+    const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=981672ca&s=${store.state.searchText}&page=${page}`)     // API Usage : https://www.omdbapi.com/?apikey=[yourkey]&
     const { Search, totalResults, Response, Error } = await res.json()
     if (Response === 'True') {      // 반응이 True이면 "검색 결과가 있다면"
       store.state.movies = [
@@ -37,5 +39,15 @@ export const searchMovies = async page => {
     console.log('searchMovies error', error)
   } finally {
     store.state.loading = false
+  }
+}
+
+/* 영화 상세정보 가져오기 */
+export const getMovieDetails = async id => {
+  try {
+    const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=981672ca&i=${id}&plot=full`);
+    store.state.movie = await ares.json()
+  } catch (error) {
+    console.log('getMovieDetails error: ', error)
   }
 }
