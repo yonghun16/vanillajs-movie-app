@@ -2,15 +2,16 @@ import { Component } from '../core/Core'
 import movieStore, { getMovieDetails } from '../store/movie'
 
 export default class Movie extends Component {
-  async render() {
+  async render() {   // 영화 상세정보 렌더
     await getMovieDetails(history.state.id)
     // console.log(movieStore.state.movie)
     const { movie } = movieStore.state
+    const bigPoster = movie.Poster.replace('SX300', 'SX700')   // 포스트 사이즈 SX300 -> SX700 (고해상도로 변경)
 
     this.el.classList.add('container', 'the-movie')
     this.el.innerHTML = `
       <div 
-        style="background-image: url(${movie.Poster})" 
+        style="background-image: url(${bigPoster})" 
         class="poster"></div>
       <div class="spece">
         <div class="title">

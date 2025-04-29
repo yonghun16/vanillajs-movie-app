@@ -6,7 +6,7 @@ export default class Search extends Component {
   render() {
     this.el.classList.add('search')
     this.el.innerHTML = `
-      <input type="text" placeholder="Enter the movie title to Search" />
+      <input type="text" value= "${movieStore.state.searchText}" placeholder="Enter the movie title to Search" />
       <button class="btn btn-primary">
         Search!
       </button>
