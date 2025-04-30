@@ -14,7 +14,8 @@ export default class About extends Component {
           href="https://mail.google.com/mail/?view=cm&fs=1&to=${email}"
           target="_blank">
           ${email}
-        </a></p>
+        </a>
+      </p>
       <p>
         <a href="${github}" target="_blank">Github</a>
       </p>
