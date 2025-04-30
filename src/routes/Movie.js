@@ -2,13 +2,26 @@ import { Component } from '../core/Core'
 import movieStore, { getMovieDetails } from '../store/movie'
 
 export default class Movie extends Component {
-  async render() {   // 영화 상세정보 렌더
+  async render() {      // 영화 상세정보 렌더
+    this.el.classList.add('container', 'the-movie')
+
+    /* Skeleton UI */
+    this.el.innerHTML = /* html */ `
+      <div class="poster skeleton"></div>
+      <div class="spece">
+        <div class="title skeleton"></div>
+        <div class="labels skeleton"></div>
+        <div class="plot skeleton"></div>
+      </div>
+    `
+
+    /* 영화 상세정보 가져오기 */
     await getMovieDetails(history.state.id)
     // console.log(movieStore.state.movie)
     const { movie } = movieStore.state
     const bigPoster = movie.Poster.replace('SX300', 'SX700')   // 포스트 사이즈 SX300 -> SX700 (고해상도로 변경)
 
-    this.el.classList.add('container', 'the-movie')
+    /* 영화 상세정보 렌더 */
     this.el.innerHTML = `
       <div 
         style="background-image: url(${bigPoster})" 
