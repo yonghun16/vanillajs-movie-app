@@ -21,6 +21,10 @@ export default class TheHeader extends Component {
         ]
       }
     })
+    // 페이지가 바뀔 때마다 재 렌더
+    window.addEventListener('popstate', () => {
+      this.render()
+    })
   }
   render() {
     this.el.innerHTML = /* html */ `
@@ -31,10 +35,15 @@ export default class TheHeader extends Component {
       </a>
       <nav>
         <ul>
-          ${this.state.menus.map(menu => {
+          ${this.state.menus.map(menu => {             // menus라는 배열 데이터를 반복
+            const href = menu.href.split('?')[0]       // menu.href의 ?표 앞쪽만 구하기 (query를 제외하는 과정)
+            const hash = location.hash.split('?')[0]   // location.hash의 ?표 앞쪽만 구하기 (query를 제외하는 과정)
+            const isActive = href === hash             // menu.href와 location.hash이 같다면 isActive true 하여 네비게이션의 'Active' 상태 활성화
             return /* html */ `
               <li>
-                <a href="${menu.href}">
+                <a 
+                  class = "${isActive ? 'active' : ''}" 
+                  href="${menu.href}">
                   ${menu.name}
                 </a>
               </li>
