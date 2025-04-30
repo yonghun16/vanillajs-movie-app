@@ -19,7 +19,7 @@ export default class Movie extends Component {
     await getMovieDetails(history.state.id)
     // console.log(movieStore.state.movie)
     const { movie } = movieStore.state
-    const bigPoster = movie.Poster?.replace('SX300', 'SX700') || ''
+    const bigPoster = movie.Poster.replace('SX300', 'SX700')   // 포스트 사이즈 SX300 -> SX700 (고해상도로 변경)
 
     /* 영화 상세정보 렌더 */
     this.el.innerHTML = `
