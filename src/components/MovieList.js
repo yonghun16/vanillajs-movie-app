@@ -38,3 +38,4 @@ export default class MovieList extends Component {
       : loaderEl.classList.add('hide')                // hide를 표시하여 보이지 않게 함. (로딩 끝)
   }
 }
+
