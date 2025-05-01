@@ -13,7 +13,7 @@
        Vanilla JS Movie App
   </li>
   <li>
-	Component, Routing, Store
+	Component, Routing, and Store based on Vanilla JavaScript
   </li>
   <li>
 	loading Animation, Skeleton UI
