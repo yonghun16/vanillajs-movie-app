@@ -10,13 +10,16 @@
 
 <ul>
   <li>
-      Vanilla JS Movie App
+       Vanilla JS Movie App
+  </li>
+  <li>
+	Component, Routing, Store
+  </li>
+  <li>
+	loading Animation, Skeleton UI
   </li>
   <li>
 	API key hide
-  </li>
-  <li>
-	Skeleton UI
   </li>
   <li>
 	Single-page, 반응형
