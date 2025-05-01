@@ -54,16 +54,16 @@ export const searchMovies = async page => {
 /* 영화 상세정보 가져오기 */
 export const getMovieDetails = async id => {
   try {
-    const res = await fetch(`https://omdbapi.com/?apikey=981672ca&i=${id}&plot=full`);
-    // const res = await fetch('/api/movie', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     id
-    //   })
-    // })
+    // const res = await fetch(`https://omdbapi.com/?apikey=981672ca&i=${id}&plot=full`);
+    const res = await fetch('/api/movie', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id
+      })
+    })
     store.state.movie = await res.json()
   } catch (error) {
     console.log('getMovieDetails error: ', error)

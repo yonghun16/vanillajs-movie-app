@@ -3,14 +3,13 @@ const { APIKEY } = process.env
 export default async function handler(request, response) {
   const { title, page, id } = request.body
 
-let url = ''
+  let url = ''
 
-if (id) {
-  url = `https://omdbapi.com/?apikey=${APIKEY}&i=${id}&plot=full`
-} else {
-  url = `https://omdbapi.com/?apikey=${APIKEY}&s=${title}&page=${page}`
-  console.log(url)
-}
+  if (id) {
+    url = `https://omdbapi.com/?apikey=${APIKEY}&i=${id}&plot=full`
+  } else {
+    url = `https://omdbapi.com/?apikey=${APIKEY}&s=${title}&page=${page}`
+  }
 
   try {
     const res = await fetch(url)
