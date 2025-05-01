@@ -36,6 +36,7 @@ export const searchMovies = async page => {
     })
     const { Search, totalResults, Response, Error } = await res.json()
     if (Response === 'True' && Array.isArray(Search)) {      // 반응이 True이면 "검색 결과가 있다면"
+      console.log(Search)
       store.state.movies = [
         ...store.state.movies,      // 기존의 영화 리스트 +   (ex. 1~2 page)
         ...Search                   // 검색 결과 영화 리스트  (ex. 3page)
