@@ -12,9 +12,15 @@
   <li>
       Vanilla JS Movie App
   </li>
-	<li>
-		Single-page
-	</li>
+  <li>
+	API key hide
+  </li>
+  <li>
+	Skeleton UI
+  </li>
+  <li>
+	Single-page, 반응형
+  </li>
 </ul>
 
 </br>
