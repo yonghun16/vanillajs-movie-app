@@ -57,6 +57,9 @@ export const getMovieDetails = async id => {
     // const res = await fetch(`https://omdbapi.com/?apikey=981672ca&i=${id}&plot=full`);
     const res = await fetch('/api/movie', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         id
       })
