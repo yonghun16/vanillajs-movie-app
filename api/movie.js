@@ -2,7 +2,8 @@ const { APIKEY } = process.env
 
 export default async function handler(request, response) {
   const { title, page, id } = request.body
-  console.log(request.body)
+  console.log(url)
+  console.log(id)
 
   const url = id
     ? `https://omdbapi.com/?apikey=${APIKEY}&i=${id}&plot=full`
