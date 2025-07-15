@@ -1,4 +1,4 @@
-import { Component } from './core/Core.js'
+import { Component } from './core/Core'
 import TheHeader from './components/TheHeader'
 import TheFooter from './components/TheFooter'
 

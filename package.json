@@ -10,11 +10,13 @@
     "vercel": "vercel dev"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.6.12",
     "dotenv": "^16.5.0",
-    "vercel": "^41.7.0",
+    "vercel": "^28.18.5",
     "vite": "^6.3.1"
   },
   "dependencies": {
+    "@vercel/node": "^2.3.0",
     "node-fetch": "^2.7.0"
   }
 }
